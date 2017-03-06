@@ -7,6 +7,9 @@ import { HttpModule } from '@angular/http';
 import {AppComponent} from "./components/app.component";
 import {routing, routedComponents} from "./app.routing";
 
+//Directives
+import {AlertComponent} from "./shared/directives/alert.component";
+
 //Shared components
 import {AuthGuard} from "./shared/guard/auth.guard";
 import {AlertService} from "./shared/service/alert.service";
@@ -15,17 +18,19 @@ import {UserService} from "./shared/service/user.service";
 
 
 
+
 @NgModule({
 
   imports:      [
-      BrowserModule,
-      FormsModule,
-      HttpModule,
-      routing
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    routing
   ],
   declarations: [
-      AppComponent,
-      routedComponents
+    AppComponent,
+    routedComponents,
+    AlertComponent
   ],
 
   providers: [
@@ -35,6 +40,6 @@ import {UserService} from "./shared/service/user.service";
     UserService,
   ],
 
-  bootstrap:    [ AppComponent ]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
