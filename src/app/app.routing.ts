@@ -2,16 +2,19 @@
 //Imports
 import {ModuleWithProviders} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
-import {PageNotFoundComponent} from "./shared/404/404.component";
 import {WelcomeComponent} from "./components/welcome/welcome.component";
+import {LoginComponent} from "./components/login/login.component";
+import {HomeComponent} from "./components/home/home.component";
+import {AuthGuard} from "./shared/guard/auth.guard";
 
 //Routes
 const appRoutes: Routes = [
-  { path: '', redirectTo: 'welcome', pathMatch: 'full'},
+  { path: '', component: HomeComponent, canActivate: [AuthGuard] },
+  { path: 'login', component: LoginComponent },
   { path: 'welcome', component: WelcomeComponent },
-  { path: '**', component: PageNotFoundComponent }
+  { path: '**', redirectTo: '' }
 ];
 
 //Constants
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
-export const routedComponents = [WelcomeComponent, PageNotFoundComponent];
+export const routedComponents = [LoginComponent, WelcomeComponent, HomeComponent];
