@@ -8,16 +8,16 @@ import {AppComponent} from "./components/app.component";
 import {routing, routedComponents} from "./app.routing";
 
 //Directives
-import {AlertComponent} from "./shared/directives/alert.component";
+import {AlertComponent} from "./shared/directives/index";
 
 //Shared components
-import {AuthGuard} from "./shared/guard/auth.guard";
-import {AlertService} from "./shared/service/alert.service";
-import {AuthenticationService} from "./shared/service/authentication.service";
-import {UserService} from "./shared/service/user.service";
+import {AuthGuard} from "./shared/guard/index";
+import {AlertService, AuthenticationService, UserService} from "./shared/service/index";
 
-
-
+// used to create fake backend
+import { fakeBackendProvider } from './shared/helper/index';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { BaseRequestOptions } from '@angular/http';
 
 @NgModule({
 
@@ -38,6 +38,11 @@ import {UserService} from "./shared/service/user.service";
     AlertService,
     AuthenticationService,
     UserService,
+
+    // providers used to create fake backend
+    fakeBackendProvider,
+    MockBackend,
+    BaseRequestOptions
   ],
 
   bootstrap: [ AppComponent ]
